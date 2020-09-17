@@ -8,30 +8,25 @@
 #include <readline/readline.h>
 #include <stdlib.h>
 
-int sum_n(int n) {
-  if ( n>0 ) {
-    return n+sum_n(n-1);
+int sum_n(int n){
+  if (n == 0){
+    return 0;
   }
-  else {
-    return n;
-  }
+    else{
+      return n + sum_n(n-1);
+    }
 }
-
-void print_n(const char *s, int n) {
-  if (n>0) {
+void print_n(const char *s, int n){
+  if (n != 0){
     printf("%s\n",s);
-    print_n(s,n-1);
-  }
-  else {
-    printf("");
+    print_n(s, n-1);
   }
 }
 
-int main(void) {
-  int n = atof(readline("Enter an int: "));
-  printf("sum is %d. \n", sum_n(n));
-  const char *b = readline("Enter a string: ");
-  print_n(b, n);
-
+int main(void){
+  int result = atoi(readline("Enter an int: "));
+  printf("sum is %d.\n",sum_n(result));
+  char *string = readline("Enter a string: ");
+  print_n(string,result);
   return 0;
 }
